@@ -14,6 +14,10 @@ describe("Manager", () => {
         });
 
         //test calling funtions
+        it("Shuold return manager's office number", () => {
+            expect(new Manager("Beta", "01", "beta@gmail.com", "001").getOfficeNum()).toEqual("001");
+        });
+
         it("Shuold return manager's role", () => {
             expect(new Manager("Beta", "01", "beta@gmail.com", "001").getRole()).toEqual("Manager");
         });
