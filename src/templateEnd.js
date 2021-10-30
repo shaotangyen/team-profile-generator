@@ -1,4 +1,5 @@
-const templateEnd = () =>`        </div>
+const templateEnd = () =>
+`        </div>
     </div>
 
 </body>`;

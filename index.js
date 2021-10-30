@@ -1,7 +1,5 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-// const util = require('util');
-// const writeFileAsync = util.promisify(fs.writeFile);
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -11,7 +9,7 @@ const templateManager = require("./src/templateManager");
 const templateEngineer = require("./src/templateEngineer");
 const templateIntern = require("./src/templateIntern");
 
-// List of questions to ask the user and gather their input using inquirer
+//prompt function for user to enter manager info in the command line
 const promptManagerInfo = () => {
     return inquirer
         .prompt([
@@ -37,14 +35,17 @@ const promptManagerInfo = () => {
             }
         ])
         .then((val) => {
+            //passing a manager type to get the manager card html text and append it onto the index.html file
             fs.appendFileSync('./dist/index.html', templateManager(
                 new Manager(val.manager_name, val.manager_id, val.manager_email, val.office_num)
             ));
+            //going back to the menu
             promptMenu();
         })
         .catch((err) => console.error(err));
 }
 
+//prompt function for user to enter engineer info in the command line
 const promptEngineerInfo = () => {
     return inquirer
         .prompt([
@@ -70,13 +71,16 @@ const promptEngineerInfo = () => {
             }
         ])
         .then((val) => {
+            //passing a engineer type to get the engineer card html text and append it onto the index.html file
             fs.appendFileSync('./dist/index.html', templateEngineer(new Engineer(val.engineer_name,
                 val.engineer_id, val.engineer_email, val.engineer_github_id)));
+            //going back to the menu
             promptMenu();
         })
         .catch((err) => console.error(err));
 }
 
+//prompt function for user to enter intern info in the command line
 const promptInternInfo = () => {
     return inquirer
         .prompt([
@@ -102,13 +106,16 @@ const promptInternInfo = () => {
             }
         ])
         .then((val) => {
+            //passing a intern type to get the intern card html text and append it onto the index.html file
             fs.appendFileSync('./dist/index.html', templateIntern(new Intern(val.intern_name,
                 val.intern_id, val.intern_email, val.intern_school)));
+            //going back to the menu
             promptMenu();
         })
         .catch((err) => console.error(err));
 }
 
+//menu prompt function for user to pick what to do after adding the manager
 const promptMenu = () => {
     return inquirer
         .prompt([
@@ -121,15 +128,16 @@ const promptMenu = () => {
             }
         ])
         .then(val => {
+            //check which choice is selected and call the corresponding function, or exit the program
             if (val.menu === "1) To add an engineer member") {
-                console.log("=== Adding an Engineer ===");
+                console.log("====== Adding an Engineer ======");
                 promptEngineerInfo();
             } else if (val.menu === "2) To add an intern member") {
-                console.log("=== Adding an Intern ===");
+                console.log("====== Adding an Intern ======");
                 promptInternInfo();
             } else if (val.menu === "3) Exit") {
                 fs.appendFileSync('./dist/index.html', templateEnd());
-                console.log("=== END ===");
+                console.log("====== END ======");
                 process.exit(0);
             }
         })
@@ -137,8 +145,9 @@ const promptMenu = () => {
 }
 
 function int() {
+    //append the starter html text into the index.html file, then ask user to input manager info
     fs.appendFileSync('./dist/index.html', templateStart());
-    console.log("=== Adding a Manager ===");
+    console.log("====== Adding a Manager ======");
     promptManagerInfo();
 }
 
