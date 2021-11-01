@@ -6,9 +6,9 @@ This is a Team Profile generator. The app uses Node.js and asks user to input th
 
 ## Table of Contents
 1. [Setup](#setup)
-2. [The design](#design)
+2. [Design](#design)
 3. [Links](#links)
-4. [Demo Walkthrough](#walthrough)
+4. [Demo](#demo)
 5. [License](#license)
 
 <a name="setup"></a>
@@ -19,7 +19,7 @@ npm install and Node.js is required. Type "npm install -y", "npm --save-dev jest
 
 <a name="design"></a>
 
-## The design
+## Design
 
 * All test files are in the __ test __ folder.
 * All four classes Employee, Manager, Engineer, Intern are in the lib folder
@@ -33,9 +33,9 @@ npm install and Node.js is required. Type "npm install -y", "npm --save-dev jest
 
 Please check out [Github Page](https://github.com/shaotangyen/team-profile-generator) for the app.
 
-<a name="walthrough"></a>
+<a name="demo"></a>
 
-## Demo Walkthrough
+## Demo
 
 The following video demonstrates the Team Profile Generator: [Click to watch](https://drive.google.com/file/d/13wR_s-3vXr1w8Dt7OVoVuCqu-J7j-nIy/view?usp=sharing).
 
